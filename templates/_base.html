@@ -33,22 +33,31 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'jokes:list' %}">Jokes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Log in</a>
-        </li>
+        {% if not user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+          </li>
+        {% else %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-             role="button" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">
+            role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             Me
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">My Account</a>
             <a class="dropdown-item" href="#">My Django Jokes</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Log out</a>
+            <form method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %}
+              <button class="btn dropdown-item">Log Out</button>
+            </form>
           </div>
         </li>
+        {% endif %}
       </ul>
       <form class="row my-2 my-lg-0 row">
         <input class="form-control me-sm-2 col" type="search"
@@ -69,6 +78,11 @@
       <nav>
         <ul class="nav">
           <li class="nav-item"><a class="nav-link" href="{% url 'pages:about-us' %}">About</a></li>
+          {% if user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-item" href="/admin">Admin</a>
+            </li>
+          {% endif %}
           <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
         </ul>
       </nav>
