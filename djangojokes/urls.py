@@ -14,6 +14,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import private_storage.urls
+
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,6 +29,9 @@ urlpatterns = [
     # User Management
     path('account/', include('users.urls')),
     path('account/', include('allauth.urls')),
+
+    # private media
+    path('media/private/', include(private_storage.urls)),
 
     # Local Apps
     path('jobs/', include('jobs.urls')),
