@@ -76,7 +76,9 @@
       {% for message in messages %}
         <div class="alert message{{ message.tags }} alert-dismissible" role="alert">
           <strong>{{message}}</strong>
-          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+            <i class="fas fa-window-close"></i>
+          </button>
         </div>
       {% endfor %}
     </ul>
