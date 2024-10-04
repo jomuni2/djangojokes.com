@@ -23,8 +23,8 @@
                     <span class="badge rounded-pill bg-secondary">{{ tag }}</span>
                 {% endfor %}
             </div>
-            {% if joke.user == user %}
-                <div class="border-bottom border-faded m-2 pb-2">
+            <div class="border-bottom border-faded m-2 pb-2">
+                {% if joke.user == user %}
                     <a href="{% url 'jokes:update' joke.slug %}"
                         class="btn btn-info btn-sm me-2">Update</a>
                     <a href="{% url 'jokes:delete' joke.slug %}"
@@ -55,7 +55,7 @@
                     <span id="num-votes">{{ joke.num_votes }}
                         vote{{ joke.num_votes|pluralize }}</span>
                 {% endif %}
-                </div>
+            </div>
             
             <small class="text-muted">
                 {% if joke.user.avatar %}
