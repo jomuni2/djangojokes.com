@@ -28,7 +28,7 @@ def vote(request, slug):
             joke_vote = JokeVote.objects.get(user=user, joke=joke)
 
             if joke_vote.vote == vote:
-                msg = 'Right. You gold us already. Geez.'
+                msg = 'Right. You told us already. Geez.'
             else:
                 joke_vote.vote = vote
                 joke_vote.save()
