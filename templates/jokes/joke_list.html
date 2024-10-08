@@ -2,9 +2,6 @@
 
 {% block title %}Jokes{% endblock %}
 {% block main %}
-    <a class="btn btn-success btn-sm float-end" href="{% url 'jokes:create' %}">
-        + New Joke
-    </a>
     <div class="row">
         <div class="col-12 col-md-2 col-lg-3">
             <h2>Jokes</h2>
@@ -16,7 +13,7 @@
                     {% for field in order_fields %}
                         <option value="{{ field }}"
                             {% if order == field %}selected{% endif %}
-                            >{{ field|title }}</option>
+                        >{{ field|title }}</option>
                     {% endfor %}
                 </select>
                 <div class="form-check form-check-inline">
