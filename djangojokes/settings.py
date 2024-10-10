@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!hjygu=f#$^z9*wf1+imn(htcbqfbhxw=r@l%g*az9*2un!#26'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['janesdjangojokes.herokuapp.com']
 
 INTERNAL_IPS = [ # Necessary for the Debug Toolbar
     '127.0.0.1',
@@ -101,15 +102,7 @@ WSGI_APPLICATION = 'djangojokes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jokes',
-        'USER': 'postgres',
-        'PASSWORD': 'Lysmom25!',
-        'PORT': 5432
-    }
-}
+DATABASES = {'default' : dj_database_url.config()}
 
 # EMAIL
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
