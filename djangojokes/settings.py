@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = [ # Necessary for the Debug Toolbar
+    '127.0.0.1',
+]
+
 
 # Application definition
 
@@ -46,6 +50,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'debug_toolbar',
 
     # Local apps
     'common.apps.CommonConfig',
@@ -69,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware', # The Debug Toolbar
 ]
 
 ROOT_URLCONF = 'djangojokes.urls'
