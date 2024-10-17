@@ -187,16 +187,18 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_S3_REGION_NAME = 'us-east-1'
 
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
 STATICFILES_STORAGE = 'djangojokes.storage_backends.StaticStorage'
 DEFAULT_FILE_STORAGE = 'djangojokes.storage_backends.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'djangojokes.storage_backends.PrivateMediaStorage'
 
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
 
 
 # Default primary key field type
