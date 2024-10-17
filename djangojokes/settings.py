@@ -211,3 +211,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if os.environ.get('ENVIRONMENT') != 'production':
     from .local_settings import *
+
+
+# Local Static File Settings
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFileStorage'
+# STATIC_URL = '/static/'
