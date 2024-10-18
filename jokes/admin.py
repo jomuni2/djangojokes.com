@@ -45,9 +45,11 @@ class JokeAdmin(DjangoJokesAdmin):
 
     def get_readonly_fields(self, request, obj=None):
         if obj:  # editing an existing object
-            return ('slug', 'created', 'updated')
-        
+            return ('slug', 'created', 'updated', 'vote_summary')
         return()
+    
+    def vote_summary(self, obj):
+        return f'{obj.num_votes} votes. Rating: {obj.rating}.'
     
 
 @admin.register(JokeVote)
