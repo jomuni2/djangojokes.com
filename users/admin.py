@@ -1,3 +1,5 @@
+from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
+
 from django.contrib import admin
 
 from django.contrib.auth import get_user_model
@@ -18,7 +20,7 @@ class CustomUserAdmin(DjangoJokesAdmin, UserAdmin):
     # List Attributes
     list_display = UserAdmin.list_display + ('is_superuser',)
     list_display_links = ('username', 'email', 'first_name', 'last_name')
-    
+
     readonly_fields = ['password_form']
 
     # Fields for editing existing user.
@@ -48,3 +50,8 @@ class CustomUserAdmin(DjangoJokesAdmin, UserAdmin):
     def get_form(self, request, obj=None, **kwargs):
         self.save_on_top = obj is not None
         return super().get_form(request, obj, **kwargs)
+    
+
+admin.site.unregister(SocialApp)
+admin.site.unregister(SocialAccount)
+admin.site.unregister(SocialToken)
