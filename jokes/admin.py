@@ -2,6 +2,8 @@ from typing import Any
 from django.contrib import admin
 from django.http import HttpRequest
 
+from common.admin import DjangoJokesAdmin
+
 from .models import Category, Joke, JokeVote, Tag
 
 # Register your models here.
@@ -26,7 +28,7 @@ class CategoryAdmin(admin.ModelAdmin):
         return ()
 
 @admin.register(Joke)
-class JokeAdmin(admin.ModelAdmin):
+class JokeAdmin(DjangoJokesAdmin):
     model = Joke
     list_display = ['question', 'created', 'updated']
 
