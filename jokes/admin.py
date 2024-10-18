@@ -30,7 +30,13 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Joke)
 class JokeAdmin(DjangoJokesAdmin):
     model = Joke
+
+    # List Attributes
+    date_hierarchy = 'updated'
     list_display = ['question', 'created', 'updated']
+    search_fileds = ['question', 'answer']
+    ordering = ['-updated']
+    list_filter = ['updated', 'category', 'tags']
 
     def get_readonly_fields(self, request, obj=None):
         if obj:  # editing an existing object
